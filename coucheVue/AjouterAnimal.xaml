@@ -1,0 +1,77 @@
+<Window x:Class="RefugeAnimauxWPF.coucheVue.AjouterAnimal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RefugeAnimauxWPF.coucheVue"
+        mc:Ignorable="d"
+        Title="Ajout d'un Animal" Style="{StaticResource WindowColor}" 
+        Height="520" Width="450" WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock Text="🐾 Ajouter un Animal" Foreground="White" FontSize="18" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Nom *:</TextBlock>
+            <TextBox Margin="5" Width="220" Validation.ErrorTemplate="{StaticResource Symbole}"
+                     Style="{StaticResource textBoxInErreur}">
+                <TextBox.Text>
+                    <Binding Path="Nom" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <local:ValidationMinCaracteres />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Type *:</TextBlock>
+            <ComboBox Margin="5" Width="220" SelectedValue="{Binding Type, Mode=TwoWay}" 
+                      SelectedValuePath="Content">
+                <ComboBoxItem Content="chien"/>
+                <ComboBoxItem Content="chat"/>
+                <ComboBoxItem Content="rongeur"/>
+                <ComboBoxItem Content="oiseau"/>
+                <ComboBoxItem Content="reptile"/>
+                <ComboBoxItem Content="autre"/>
+            </ComboBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Date naissance *:</TextBlock>
+            <DatePicker Margin="5" Width="220" SelectedDate="{Binding DateNaissance, Mode=TwoWay}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Couleurs:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Couleurs, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Stérilisé:</TextBlock>
+            <CheckBox Margin="5" VerticalAlignment="Center" IsChecked="{Binding Sterilise, Mode=TwoWay}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Date stérilisation:</TextBlock>
+            <DatePicker Margin="5" Width="220" SelectedDate="{Binding DateSterilisation, Mode=TwoWay}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Particularité:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Particularite, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5" VerticalAlignment="Top">Description:</TextBlock>
+            <TextBox Margin="5" Width="220" Height="50" TextWrapping="Wrap" AcceptsReturn="True"
+                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+            <Button Margin="10" Content="Ajouter" Width="100" Padding="10,5" Click="AjoutAnimal_Click"/>
+            <Button Margin="10" Content="Fermer" Width="100" Padding="10,5" Click="BFermer_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

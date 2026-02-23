@@ -1,0 +1,85 @@
+<Window x:Class="RefugeAnimauxWPF.coucheVue.AjouterContact"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RefugeAnimauxWPF.coucheVue"
+        mc:Ignorable="d"
+        Title="Ajout d'un Contact" Style="{StaticResource WindowColor}" 
+        Height="520" Width="450" WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock Text="👤 Ajouter un Contact" Foreground="White" FontSize="18" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,0,0,15"/>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Nom *:</TextBlock>
+            <TextBox Margin="5" Width="220" Validation.ErrorTemplate="{StaticResource Symbole}"
+                     Style="{StaticResource textBoxInErreur}">
+                <TextBox.Text>
+                    <Binding Path="Nom" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <local:ValidationMinCaracteres />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Prénom *:</TextBlock>
+            <TextBox Margin="5" Width="220" Validation.ErrorTemplate="{StaticResource Symbole}"
+                     Style="{StaticResource textBoxInErreur}">
+                <TextBox.Text>
+                    <Binding Path="Prenom" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <local:ValidationMinCaracteres />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Registre national:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding RegistreNational, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                     ToolTip="Format: YY.MM.DD-XXX.XX"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">GSM:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Gsm, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Téléphone:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Email:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <TextBlock Text="--- Adresse ---" Foreground="LightGray" HorizontalAlignment="Center" Margin="0,8,0,5"/>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Rue *:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Rue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Code postal *:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Cp, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Foreground="White" Width="120" Margin="5">Localité *:</TextBlock>
+            <TextBox Margin="5" Width="220" Text="{Binding Localite, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,12,0,0">
+            <Button Margin="10" Content="Ajouter" Width="100" Padding="10,5" Click="AjoutContact_Click"/>
+            <Button Margin="10" Content="Fermer" Width="100" Padding="10,5" Click="BFermer_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

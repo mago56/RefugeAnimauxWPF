@@ -1,0 +1,60 @@
+<Window x:Class="RefugeAnimauxWPF.coucheVue.GererVaccinations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Gestion des Vaccinations" Height="550" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#2D5016">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="💉 Gestion des Vaccinations" Foreground="White" FontSize="20" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,15,0,15"/>
+        
+        <DataGrid Grid.Row="1" Width="750" Height="250"
+                  Margin="10" HorizontalAlignment="Center"
+                  ItemsSource="{Binding collectionVaccinations}"
+                  AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                  Background="White" AlternatingRowBackground="#E8F5E9">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Animal" Binding="{Binding Animal.Nom}" Width="150"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Animal.Type}" Width="100"/>
+                <DataGridTextColumn Header="Vaccin" Binding="{Binding Vaccin.Nom}" Width="200"/>
+                <DataGridTextColumn Header="Date Vaccination" Binding="{Binding Date_vaccination, StringFormat=dd/MM/yyyy}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Formulaire d'ajout -->
+        <GroupBox Grid.Row="2" Header="Nouvelle Vaccination" Foreground="White" Margin="20,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Foreground="White" Margin="5">Animal:</TextBlock>
+                    <ComboBox Width="150" ItemsSource="{Binding ListeAnimaux}"
+                              SelectedItem="{Binding AnimalSelectionne, Mode=TwoWay}"
+                              DisplayMemberPath="Nom"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Foreground="White" Margin="5">Vaccin:</TextBlock>
+                    <ComboBox Width="150" ItemsSource="{Binding ListeVaccins}"
+                              SelectedItem="{Binding VaccinSelectionne, Mode=TwoWay}"
+                              DisplayMemberPath="Nom"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Foreground="White" Margin="5">Date:</TextBlock>
+                    <DatePicker Width="150" SelectedDate="{Binding DateVaccination, Mode=TwoWay}"/>
+                </StackPanel>
+                <Button Content="Ajouter" Width="80" Margin="10,20,10,5" Padding="5" Click="Ajouter_Click"/>
+            </StackPanel>
+        </GroupBox>
+        
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Rafraîchir" Width="100" Margin="10,5" Click="Rafraichir_Click" Padding="10,5"/>
+            <Button Content="Fermer" Width="100" Margin="10,5" Click="Fermer_Click" Padding="10,5"/>
+        </StackPanel>
+    </Grid>
+</Window>

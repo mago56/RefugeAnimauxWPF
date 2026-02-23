@@ -1,0 +1,143 @@
+<Window x:Class="RefugeAnimauxWPF.coucheVue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Refuge pour Animaux - Page principale" 
+        Style="{StaticResource WindowColor}" 
+        Height="420" Width="1100" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <!--Bandeau titre-->
+        <StackPanel Name="stMenu" Background="#1A3D0A" VerticalAlignment="Top" 
+                    Orientation="Vertical" Height="50">
+            <TextBlock Text="🐾 REFUGE POUR ANIMAUX 🐾" 
+                       Foreground="White" FontSize="20" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,12,0,0"/>
+        </StackPanel>
+        
+        <!--Labels du Menu-->
+        <Grid Margin="5,55,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource LabelMenu}" Content="🐕 Animal" 
+                   Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"/>
+            <Label Style="{StaticResource LabelMenu}" Content="👤 Contact" 
+                   Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
+            <Label Style="{StaticResource LabelMenu}" Content="📋 Entrée/Sortie" 
+                   Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
+            <Label Style="{StaticResource LabelMenu}" Content="❤️ Adoption" 
+                   Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center"/>
+            <Label Style="{StaticResource LabelMenu}" Content="💉 Vaccin" 
+                   Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center"/>
+        </Grid>
+        
+        <!--Contient tous les boutons-->
+        <Grid Margin="5,95,5,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Animal-->
+            <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Command="{Binding ListerAnimaux_Click}" Content="Lister" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Affiche la liste des animaux</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding AjouterAnimal_Click}" Content="Ajouter" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Ajoute un nouvel animal</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding SupprimerAnimal_Click}" Content="Supprimer" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Supprime un animal</Button.ToolTip>
+                </Button>
+            </StackPanel>
+            
+            <!--Contact-->
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Command="{Binding ListerContacts_Click}" Content="Lister" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Affiche la liste des contacts</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding AjouterContact_Click}" Content="Ajouter" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Ajoute un nouveau contact</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding ModifierContact_Click}" Content="Modifier" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Modifie un contact</Button.ToolTip>
+                </Button>
+            </StackPanel>
+            
+            <!--Entrée/Sortie-->
+            <StackPanel Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Command="{Binding ListerEntrees_Click}" Content="Liste Entrées" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Affiche la liste des entrées</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding AjouterEntree_Click}" Content="Nouvelle Entrée" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Enregistre une nouvelle entrée</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding ListerSorties_Click}" Content="Liste Sorties" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Affiche la liste des sorties</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding AjouterSortie_Click}" Content="Nouvelle Sortie" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Enregistre une nouvelle sortie</Button.ToolTip>
+                </Button>
+            </StackPanel>
+            
+            <!--Adoption-->
+            <StackPanel Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Command="{Binding ListerAdoptions_Click}" Content="Lister Adoptions" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Affiche la liste des adoptions</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding AjouterAdoption_Click}" Content="Nouvelle demande" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Enregistre une demande d'adoption</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding GererAccueil_Click}" Content="Familles d'accueil" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Gère les familles d'accueil</Button.ToolTip>
+                </Button>
+            </StackPanel>
+            
+            <!--Vaccin-->
+            <StackPanel Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Command="{Binding GererVaccins_Click}" Content="Gérer Vaccins" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Gère la liste des vaccins</Button.ToolTip>
+                </Button>
+                <Button Command="{Binding GererVaccinations_Click}" Content="Vaccinations" 
+                        Width="130" Margin="0,5,0,0" Padding="5">
+                    <Button.ToolTip>Gère les vaccinations des animaux</Button.ToolTip>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <!--Bouton Quitter-->
+        <Button Name="btQuitterProgramme" HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" Content="Quitter" Margin="10,10"
+                Click="BtQuitterProgramme_Click" Padding="15,5">
+            <Button.ToolTip>Ferme l'application</Button.ToolTip>
+        </Button>
+    </Grid>
+</Window>
