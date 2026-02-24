@@ -91,8 +91,17 @@ namespace RefugeAnimauxWPF.coucheVue
 
         public void ExecuteSupprimerAnimal(object? parameter)
         {
-            MessageBox.Show("Fonctionnalité à implémenter : Supprimer un animal", "Information");
+            try
+            {
+                SupprimerAnimal fenetre = new SupprimerAnimal();
+                fenetre.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
 
         // ==================== CONTACTS ====================
         public void ExecuteListerContacts(object? parameter)
@@ -120,11 +129,20 @@ namespace RefugeAnimauxWPF.coucheVue
                 MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public void ExecuteModifierContact(object? parameter)
         {
-            MessageBox.Show("Fonctionnalité à implémenter : Modifier un contact", "Information");
+            try
+            {
+                ModifierContact fenetre = new ModifierContact();
+                fenetre.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+
 
         // ==================== ENTREES/SORTIES ====================
         public void ExecuteListerEntrees(object? parameter)

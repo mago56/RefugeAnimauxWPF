@@ -190,6 +190,35 @@ namespace RefugeAnimauxWPF.coucheAccesDB
             }
         }
 
+        public int ModifierContact(Contact contact)
+        {
+            try
+            {
+                string requete = @"SELECT modifier_contact(
+            @identifiant, @nom, @prenom, @rue, @cp, @localite, 
+            @registre_national, @gsm, @telephone, @email)";
+
+                NpgsqlCommand sqlCmd = new NpgsqlCommand(requete, sqlConn);
+                sqlCmd.Parameters.Add(new NpgsqlParameter("identifiant", NpgsqlDbType.Integer) { Value = contact.Identifiant });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("nom", NpgsqlDbType.Text) { Value = contact.Nom ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("prenom", NpgsqlDbType.Text) { Value = contact.Prenom ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("rue", NpgsqlDbType.Text) { Value = contact.Adresse_contact?.Rue ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("cp", NpgsqlDbType.Integer) { Value = contact.Adresse_contact?.Cp ?? 0 });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("localite", NpgsqlDbType.Text) { Value = contact.Adresse_contact?.Localite ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("registre_national", NpgsqlDbType.Text) { Value = contact.Registre_national ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("gsm", NpgsqlDbType.Text) { Value = contact.Gsm ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("telephone", NpgsqlDbType.Text) { Value = contact.Telephone ?? (object)DBNull.Value });
+                sqlCmd.Parameters.Add(new NpgsqlParameter("email", NpgsqlDbType.Text) { Value = contact.Email ?? (object)DBNull.Value });
+
+                int nbLignes = Convert.ToInt32(sqlCmd.ExecuteScalar());
+                return nbLignes;
+            }
+            catch (Exception ex)
+            {
+                throw new ExceptionAccesBD("Erreur lors de la modification du contact : " + ex.Message, ex.Message);
+            }
+        }
+
         // ==================== ENTREE ====================
 
         public int AjouterEntree(Entree entree)
@@ -209,7 +238,7 @@ namespace RefugeAnimauxWPF.coucheAccesDB
             }
             catch (Exception ex)
             {
-                throw new ExceptionAccesBD("Erreur lors de l'ajout de l'entrée", ex.Message);
+                throw new ExceptionAccesBD("Erreur lors de l'ajout de l'entrée : " + ex.Message, ex.Message);
             }
         }
 

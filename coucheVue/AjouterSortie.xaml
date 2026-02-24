@@ -36,14 +36,13 @@
         
         <StackPanel Orientation="Horizontal" Margin="5">
             <TextBlock Foreground="White" Width="120" Margin="5">Raison *:</TextBlock>
-            <ComboBox Margin="5" Width="220" SelectedValue="{Binding Raison, Mode=TwoWay}"
-                      SelectedValuePath="Content">
-                <ComboBoxItem Content="adoption"/>
-                <ComboBoxItem Content="décès"/>
-                <ComboBoxItem Content="transfert"/>
-                <ComboBoxItem Content="évasion"/>
-                <ComboBoxItem Content="autre"/>
-            </ComboBox>
+			<ComboBox Margin="5" Width="220" SelectedValue="{Binding Raison, Mode=TwoWay}"
+          SelectedValuePath="Content">
+				<ComboBoxItem Content="adoption"/>
+				<ComboBoxItem Content="retour_proprietaire"/>
+				<ComboBoxItem Content="deces_animal"/>
+				<ComboBoxItem Content="famille_accueil"/>
+			</ComboBox>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
