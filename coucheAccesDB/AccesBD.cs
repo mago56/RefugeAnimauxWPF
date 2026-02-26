@@ -417,7 +417,7 @@ namespace RefugeAnimauxWPF.coucheAccesDB
         {
             try
             {
-                string requete = "SELECT ajouter_accueil(@date_debut, @date_fin, @identifiant_animal, @identifiant_contact)";
+                string requete = "SELECT ajouter_accueil(@date_debut, @identifiant_animal, @identifiant_contact, @date_fin)";
 
                 NpgsqlCommand sqlCmd = new NpgsqlCommand(requete, sqlConn);
                 sqlCmd.Parameters.Add(new NpgsqlParameter("date_debut", NpgsqlDbType.Date) { Value = accueil.Date_debut });
