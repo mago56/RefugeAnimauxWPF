@@ -31,10 +31,7 @@
                       SelectedValuePath="Content">
                 <ComboBoxItem Content="chien"/>
                 <ComboBoxItem Content="chat"/>
-                <ComboBoxItem Content="rongeur"/>
-                <ComboBoxItem Content="oiseau"/>
-                <ComboBoxItem Content="reptile"/>
-                <ComboBoxItem Content="autre"/>
+               
             </ComboBox>
         </StackPanel>
         
